@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Demo</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin:10px;
+    border-radius:10px;
+}
+
+.price{
+    font-size:32px;
+    color:#22c55e;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.buy{
+    background:#22c55e;
+    color:white;
+}
+
+.sell{
+    background:#ef4444;
+    color:white;
+}
+
+#history{
+    text-align:left;
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📈 Trading Demo</h1>
+
+    <div class="card">
+        <h2>Saldo Virtual</h2>
+        <p id="balance">Rp 10.000.000</p>
+    </div>
+
+    <div class="card">
+        <h2>Harga BTC</h2>
+        <p class="price" id="price">Rp 1.000.000</p>
+    </div>
+
+    <button class="buy" onclick="buy()">BUY</button>
+    <button class="sell" onclick="sell()">SELL</button>
+
+    <div class="card">
+        <h2>Riwayat Transaksi</h2>
+        <ul id="history"></ul>
+    </div>
+</div>
+
+<script>
+let balance = 10000000;
+let price = 1000000;
+
+function updatePrice(){
+    let change = Math.floor(Math.random()*20000)-10000;
+    price += change;
+
+    document.getElementById("price").innerText =
+        "Rp " + price.toLocaleString("id-ID");
+}
+
+setInterval(updatePrice, 2000);
+
+function buy(){
+    balance -= 100000;
+    document.getElementById("balance").innerText =
+        "Rp " + balance.toLocaleString("id-ID");
+
+    addHistory("BUY Rp100.000");
+}
+
+function sell(){
+    balance += 100000;
+    document.getElementById("balance").innerText =
+        "Rp " + balance.toLocaleString("id-ID");
+
+    addHistory("SELL Rp100.000");
+}
+
+function addHistory(text){
+    const li = document.createElement("li");
+    li.innerText = new Date().toLocaleTimeString() + " - " + text;
+    document.getElementById("history").prepend(li);
+}
+</script>
+
+</body>
+</html>
