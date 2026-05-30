@@ -3,118 +3,358 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trading Demo</title>
+<title>Gold Trading Demo</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    background:#0f172a;
-    color:white;
-    text-align:center;
-    padding:20px;
+background:#0f172a;
+color:white;
 }
 
-.container{
-    max-width:600px;
-    margin:auto;
+.login-page{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
-.card{
-    background:#1e293b;
-    padding:20px;
-    margin:10px;
-    border-radius:10px;
+.login-box{
+background:#1e293b;
+padding:30px;
+border-radius:15px;
+width:350px;
+text-align:center;
 }
 
-.price{
-    font-size:32px;
-    color:#22c55e;
+.login-box h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
 }
 
 button{
-    padding:12px 25px;
-    margin:10px;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.login-btn{
+width:100%;
+background:gold;
+color:black;
+}
+
+.dashboard{
+display:none;
+padding:20px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.price{
+font-size:32px;
+color:gold;
+font-weight:bold;
 }
 
 .buy{
-    background:#22c55e;
-    color:white;
+background:#22c55e;
+color:white;
+margin-right:10px;
 }
 
 .sell{
-    background:#ef4444;
-    color:white;
+background:#ef4444;
+color:white;
 }
 
-#history{
-    text-align:left;
-    margin-top:20px;
+canvas{
+background:#111827;
+border-radius:10px;
+width:100%;
+height:300px;
+}
+
+ul{
+margin-top:10px;
+}
+
+li{
+padding:5px;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>📈 Trading Demo</h1>
+<div id="loginPage" class="login-page">
 
-    <div class="card">
-        <h2>Saldo Virtual</h2>
-        <p id="balance">Rp 10.000.000</p>
-    </div>
+<div class="login-box">
 
-    <div class="card">
-        <h2>Harga BTC</h2>
-        <p class="price" id="price">Rp 1.000.000</p>
-    </div>
+<h1>🥇 GOLD TRADING</h1>
 
-    <button class="buy" onclick="buy()">BUY</button>
-    <button class="sell" onclick="sell()">SELL</button>
+<input type="text" id="username" placeholder="Username">
 
-    <div class="card">
-        <h2>Riwayat Transaksi</h2>
-        <ul id="history"></ul>
-    </div>
+<input type="password" id="password" placeholder="Password">
+
+<button class="login-btn" onclick="login()">
+LOGIN
+</button>
+
+<br><br>
+
+<small>
+Demo Login<br>
+Username: admin<br>
+Password: 123456
+</small>
+
+</div>
+
+</div>
+
+<div id="dashboard" class="dashboard">
+
+<div class="header">
+
+<h2>Gold Trading Demo</h2>
+
+<div>
+👤 <span id="user"></span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Saldo Virtual</h3>
+
+<h2 id="balance">
+Rp 10.000.000
+</h2>
+
+</div>
+
+<div class="card">
+
+<h3>Harga Gold</h3>
+
+<div id="price" class="price">
+Rp 1.500.000
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Grafik Harga Gold</h3>
+
+<canvas id="chart" width="800" height="300"></canvas>
+
+</div>
+
+<div class="card">
+
+<button class="buy" onclick="buy()">
+BUY Rp100.000
+</button>
+
+<button class="sell" onclick="sell()">
+SELL Rp100.000
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Riwayat Transaksi</h3>
+
+<ul id="history"></ul>
+
+</div>
+
 </div>
 
 <script>
+
 let balance = 10000000;
-let price = 1000000;
+let goldPrice = 1500000;
 
-function updatePrice(){
-    let change = Math.floor(Math.random()*20000)-10000;
-    price += change;
+let prices = [];
 
-    document.getElementById("price").innerText =
-        "Rp " + price.toLocaleString("id-ID");
+for(let i=0;i<30;i++){
+prices.push(goldPrice);
 }
 
-setInterval(updatePrice, 2000);
+function login(){
+
+let user =
+document.getElementById("username").value;
+
+let pass =
+document.getElementById("password").value;
+
+if(user==="admin" && pass==="123456"){
+
+document.getElementById("loginPage").style.display="none";
+
+document.getElementById("dashboard").style.display="block";
+
+document.getElementById("user").innerText=user;
+
+drawChart();
+
+}else{
+
+alert("Username atau Password salah!");
+
+}
+
+}
+
+function updatePrice(){
+
+let change =
+Math.floor(Math.random()*20000)-10000;
+
+goldPrice += change;
+
+if(goldPrice<1000000){
+goldPrice=1000000;
+}
+
+document.getElementById("price").innerText =
+"Rp " + goldPrice.toLocaleString("id-ID");
+
+prices.push(goldPrice);
+
+if(prices.length>30){
+prices.shift();
+}
+
+drawChart();
+
+}
+
+setInterval(updatePrice,2000);
+
+function drawChart(){
+
+let canvas =
+document.getElementById("chart");
+
+let ctx =
+canvas.getContext("2d");
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+let max =
+Math.max(...prices);
+
+let min =
+Math.min(...prices);
+
+ctx.beginPath();
+
+for(let i=0;i<prices.length;i++){
+
+let x =
+(i/(prices.length-1))*canvas.width;
+
+let y =
+canvas.height -
+((prices[i]-min)/(max-min+1))
+*canvas.height;
+
+if(i===0){
+ctx.moveTo(x,y);
+}else{
+ctx.lineTo(x,y);
+}
+
+}
+
+ctx.strokeStyle="gold";
+ctx.lineWidth=3;
+ctx.stroke();
+
+}
 
 function buy(){
-    balance -= 100000;
-    document.getElementById("balance").innerText =
-        "Rp " + balance.toLocaleString("id-ID");
 
-    addHistory("BUY Rp100.000");
+balance -= 100000;
+
+updateBalance();
+
+addHistory(
+"BUY Gold Rp100.000"
+);
+
 }
 
 function sell(){
-    balance += 100000;
-    document.getElementById("balance").innerText =
-        "Rp " + balance.toLocaleString("id-ID");
 
-    addHistory("SELL Rp100.000");
+balance += 100000;
+
+updateBalance();
+
+addHistory(
+"SELL Gold Rp100.000"
+);
+
+}
+
+function updateBalance(){
+
+document.getElementById("balance").innerText =
+"Rp " +
+balance.toLocaleString("id-ID");
+
 }
 
 function addHistory(text){
-    const li = document.createElement("li");
-    li.innerText = new Date().toLocaleTimeString() + " - " + text;
-    document.getElementById("history").prepend(li);
+
+let li =
+document.createElement("li");
+
+li.innerText =
+new Date().toLocaleTimeString()
++ " - " + text;
+
+document.getElementById("history")
+.prepend(li);
+
 }
+
 </script>
 
 </body>
