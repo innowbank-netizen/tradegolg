@@ -1,503 +1,314 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UOB INTERNATIONAL</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Money Changing</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f766e, #064e3b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #111827;
+    }
 
-<style>
+    .container {
+      width: 100%;
+      max-width: 460px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+    h1 {
+      text-align: center;
+      color: #065f46;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
 
-body{
-background:#f5f7fb;
-}
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
 
-/* LOGIN */
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-#loginPage{
-height:100vh;
-background:linear-gradient(160deg,#0033cc,#ff0000);
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
 
-.login-box{
-background:#fff;
-width:100%;
-max-width:380px;
-padding:30px;
-border-radius:30px;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-}
+    input:focus, select:focus {
+      border-color: #0f766e;
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+    }
 
-.logo{
-text-align:center;
-font-size:40px;
-color:#0033cc;
-margin-bottom:10px;
-}
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #0f766e;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-.bank-name{
-text-align:center;
-font-size:30px;
-font-weight:bold;
-color:#0033cc;
-margin-bottom:25px;
-}
+    button:hover {
+      background: #115e59;
+      transform: translateY(-1px);
+    }
 
-.input-group{
-margin-bottom:15px;
-}
+    .hidden {
+      display: none;
+    }
 
-.input-group input{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-border-radius:12px;
-font-size:15px;
-}
+    .notice {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #ecfdf5;
+      color: #065f46;
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
-.login-btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-background:#0033cc;
-color:#fff;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
+    .history {
+      margin-top: 22px;
+    }
 
-/* DASHBOARD */
+    .history h2 {
+      font-size: 18px;
+      color: #065f46;
+      margin-bottom: 10px;
+    }
 
-#dashboard{
-display:none;
-max-width:450px;
-margin:auto;
-padding-bottom:100px;
-}
+    .transaction {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
 
-.header{
-background:linear-gradient(135deg,#0033cc,#ff0000);
-padding:25px;
-border-radius:0 0 30px 30px;
-color:white;
-}
+    .admin-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      font-size: 14px;
+      text-align: center;
+    }
 
-.header h2{
-margin-bottom:5px;
-}
+    .admin-box a {
+      color: #c2410c;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-.balance-card{
-margin:-30px 15px 0;
-background:white;
-border-radius:20px;
-padding:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-}
+    .demo-warning {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      line-height: 1.5;
+    }
 
-.balance{
-font-size:35px;
-font-weight:bold;
-color:#0033cc;
-margin-top:10px;
-}
+    @media (max-width: 480px) {
+      .container {
+        padding: 22px;
+      }
 
-.menu{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-top:20px;
-}
-
-.menu-item{
-text-align:center;
-}
-
-.icon{
-width:55px;
-height:55px;
-background:#f2f4f8;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:auto;
-font-size:20px;
-color:#0033cc;
-}
-
-.menu-item p{
-font-size:12px;
-margin-top:5px;
-}
-
-.history{
-margin:15px;
-background:white;
-padding:15px;
-border-radius:20px;
-box-shadow:0 3px 15px rgba(0,0,0,.08);
-}
-
-.history h3{
-margin-bottom:10px;
-}
-
-.transaksi{
-padding:12px 0;
-border-bottom:1px solid #eee;
-}
-
-.nominal{
-float:right;
-font-weight:bold;
-color:red;
-}
-
-.chat-admin{
-position:fixed;
-bottom:80px;
-left:50%;
-transform:translateX(-50%);
-width:90%;
-max-width:420px;
-padding:15px;
-background:linear-gradient(135deg,#0033cc,#ff0000);
-color:white;
-border:none;
-border-radius:15px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-width:100%;
-max-width:450px;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:12px;
-box-shadow:0 -3px 10px rgba(0,0,0,.1);
-}
-
-.bottom-nav div{
-text-align:center;
-font-size:12px;
-color:#555;
-}
-
-.popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.5);
-justify-content:center;
-align-items:center;
-}
-
-.popup-box{
-background:white;
-width:90%;
-max-width:350px;
-padding:20px;
-border-radius:20px;
-}
-
-.popup-box h3{
-margin-bottom:15px;
-}
-
-.popup-box input{
-width:100%;
-padding:12px;
-border:1px solid #ddd;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-.btn-merah{
-background:#ff0000;
-color:white;
-border:none;
-padding:12px;
-width:100%;
-border-radius:10px;
-cursor:pointer;
-}
-
-.btn-putih{
-margin-top:10px;
-background:#eee;
-border:none;
-padding:12px;
-width:100%;
-border-radius:10px;
-cursor:pointer;
-}
-
-</style>
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- LOGIN -->
-
-<div id="loginPage">
-
-<div class="login-box">
-
-<div class="logo">
-<i class="fa-solid fa-building-columns"></i>
-</div>
-
-<div class="bank-name">
-UOB INTERNATIONAL
-</div>
-
-<div class="input-group">
-<input type="text" id="userid" placeholder="User ID">
-</div>
-
-<div class="input-group">
-<input type="password" id="password" placeholder="Password">
-</div>
-
-<button class="login-btn" onclick="login()">
-MASUK
-</button>
-
-</div>
-
-</div>
-
-<!-- DASHBOARD -->
-
-<div id="dashboard">
-
-<div class="header">
-<h2>Selamat Datang</h2>
-<p>Nomor Rekening : 1234567890</p>
-</div>
-
-<div class="balance-card">
-
-<p>Saldo Tersedia</p>
-
-<div class="balance" id="saldo">
-RM 50,000.00
-</div>
-
-<div class="menu">
-
-<div class="menu-item">
-<div class="icon">
-<i class="fa-solid fa-money-bill-transfer"></i>
-</div>
-<p>Transfer</p>
-</div>
-
-<div class="menu-item">
-<div class="icon" onclick="bukaTarik()">
-<i class="fa-solid fa-arrow-down"></i>
-</div>
-<p>Tarik Dana</p>
-</div>
-
-<div class="menu-item">
-<div class="icon">
-<i class="fa-solid fa-wallet"></i>
-</div>
-<p>Deposit</p>
-</div>
-
-<div class="menu-item">
-<div class="icon">
-<i class="fa-solid fa-file-lines"></i>
-</div>
-<p>Mutasi</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="history">
-
-<h3>Riwayat Transaksi</h3>
-
-<div id="riwayat">
-
-<div class="transaksi">
-Deposit Awal
-<span class="nominal" style="color:green">
-+RM 50,000.00
-</span>
-</div>
-
-</div>
-
-</div>
-
-<button class="chat-admin"
-onclick="window.open('https://wa.me/6285849952796')">
-
-<i class="fa-brands fa-whatsapp"></i>
-Chat Admin
-
-</button>
-
-<div class="bottom-nav">
-
-<div>
-<i class="fa-solid fa-house"></i>
-<br>Home
-</div>
-
-<div>
-<i class="fa-solid fa-right-left"></i>
-<br>Transfer
-</div>
-
-<div>
-<i class="fa-solid fa-clock-rotate-left"></i>
-<br>Riwayat
-</div>
-
-<div>
-<i class="fa-solid fa-user"></i>
-<br>Akun
-</div>
-
-</div>
-
-</div>
-
-<!-- POPUP TARIK DANA -->
-
-<div class="popup" id="popup">
-
-<div class="popup-box">
-
-<h3>Tarik Dana</h3>
-
-<input type="number"
-id="jumlahTarik"
-placeholder="Masukkan jumlah RM">
-
-<button class="btn-merah"
-onclick="tarikDana()">
-
-Konfirmasi
-
-</button>
-
-<button class="btn-putih"
-onclick="tutupTarik()">
-
-Batal
-
-</button>
-
-</div>
-
-</div>
-
-<script>
-
-let saldo = 50000;
-
-function login(){
-
-let id = document.getElementById("userid").value;
-let pass = document.getElementById("password").value;
-
-if(id=="admin" && pass=="12345"){
-
-document.getElementById("loginPage").style.display="none";
-document.getElementById("dashboard").style.display="block";
-
-}else{
-
-alert("ID atau Password Salah");
-
-}
-
-}
-
-function bukaTarik(){
-
-document.getElementById("popup").style.display="flex";
-
-}
-
-function tutupTarik(){
-
-document.getElementById("popup").style.display="none";
-
-}
-
-function tarikDana(){
-
-let jumlah =
-parseFloat(document.getElementById("jumlahTarik").value);
-
-if(isNaN(jumlah) || jumlah<=0){
-
-alert("Masukkan jumlah yang benar");
-return;
-
-}
-
-if(jumlah > saldo){
-
-alert("Saldo tidak mencukupi");
-return;
-
-}
-
-saldo -= jumlah;
-
-document.getElementById("saldo").innerHTML =
-"RM " + saldo.toLocaleString();
-
-let item =
-document.createElement("div");
-
-item.className="transaksi";
-
-item.innerHTML=
-'Penarikan Dana <span class="nominal">-RM '+
-jumlah.toLocaleString()+
-'</span>';
-
-document.getElementById("riwayat")
-prepend(item);
-
-alert("Penarikan berhasil diproses");
-
-tutupTarik();
-
-}
-
-</script>
-
+  <div class="container">
+    <section id="loginPage">
+      <h1>Money Changing</h1>
+      <p class="subtitle">Login pengguna</p>
+
+      <form id="loginForm">
+        <label for="userId">ID</label>
+        <input type="text" id="userId" placeholder="Masukkan ID" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Masukkan password" required />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <p class="demo-warning">Demo sahaja. Jangan masukkan ID atau password sebenar.</p>
+    </section>
+
+    <section id="transferPage" class="hidden">
+      <h1>Money Changing</h1>
+      <p class="subtitle">Form transfer Ringgit Malaysia</p>
+
+      <form id="transferForm">
+        <label for="amount">Nominal RM</label>
+        <input type="number" id="amount" placeholder="Contoh: 1500" min="1" required />
+
+        <label for="ownerName">Nama Pemilik Rekening</label>
+        <input type="text" id="ownerName" placeholder="Nama penerima" required />
+
+        <label for="accountNumber">Nomor Rekening</label>
+        <input type="text" id="accountNumber" placeholder="Nomor rekening tujuan" required />
+
+        <label for="bankName">Nama Bank</label>
+        <select id="bankName" required>
+          <option value="">Pilih bank</option>
+          <option>RHB Bank</option>
+          <option>Maybank</option>
+          <option>CIMB Bank</option>
+          <option>Public Bank</option>
+          <option>Hong Leong Bank</option>
+          <option>Bank Islam</option>
+          <option>BSN</option>
+        </select>
+
+        <button type="submit">Transfer</button>
+      </form>
+
+      <div id="successMessage" class="notice hidden"></div>
+
+      <button id="withdrawBtn" type="button">Tarik</button>
+
+      <div id="adminBox" class="admin-box hidden">
+        Untuk proses tarik, sila hubungi admin:<br />
+        <a id="adminLink" href="#" target="_blank">+60 12-345 6789</a>
+      </div>
+
+      <div class="history">
+        <h2>Riwayat Transaksi</h2>
+        <div id="historyList">
+          <p class="subtitle">Belum ada transaksi.</p>
+        </div>
+      </div>
+
+      <p class="demo-warning">Catatan: halaman ini tidak menyambung ke bank dan tidak memproses wang sebenar.</p>
+    </section>
+  </div>
+
+  <script>
+    const loginPage = document.getElementById('loginPage');
+    const transferPage = document.getElementById('transferPage');
+    const loginForm = document.getElementById('loginForm');
+    const transferForm = document.getElementById('transferForm');
+    const successMessage = document.getElementById('successMessage');
+    const historyList = document.getElementById('historyList');
+    const withdrawBtn = document.getElementById('withdrawBtn');
+    const adminBox = document.getElementById('adminBox');
+    const adminLink = document.getElementById('adminLink');
+
+    const adminPhone = '60123456789';
+    const transactions = [];
+
+    loginForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      loginPage.classList.add('hidden');
+      transferPage.classList.remove('hidden');
+    });
+
+    transferForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const amount = Number(document.getElementById('amount').value);
+      const ownerName = document.getElementById('ownerName').value.trim();
+      const accountNumber = document.getElementById('accountNumber').value.trim();
+      const bankName = document.getElementById('bankName').value;
+
+      const transaction = {
+        amount,
+        ownerName,
+        accountNumber,
+        bankName,
+        date: new Date().toLocaleString('ms-MY')
+      };
+
+      transactions.unshift(transaction);
+      renderHistory();
+
+      successMessage.classList.remove('hidden');
+      successMessage.innerHTML = `Transfer demo sebanyak <strong>${formatRM(amount)}</strong> telah direkodkan ke rekening tujuan atas nama <strong>${ownerName}</strong>.`;
+
+      transferForm.reset();
+    });
+
+    withdrawBtn.addEventListener('click', function () {
+      adminBox.classList.remove('hidden');
+      const message = encodeURIComponent('Halo admin, saya ingin membuat permohonan tarik dana Money Changing.');
+      adminLink.href = `https://wa.me/${adminPhone}?text=${message}`;
+    });
+
+    function renderHistory() {
+      historyList.innerHTML = '';
+
+      transactions.forEach(function (item) {
+        const div = document.createElement('div');
+        div.className = 'transaction';
+        div.innerHTML = `
+          <strong>${formatRM(item.amount)}</strong><br />
+          Nama: ${escapeHTML(item.ownerName)}<br />
+          Rekening: ${escapeHTML(item.accountNumber)}<br />
+          Bank: ${escapeHTML(item.bankName)}<br />
+          Masa: ${item.date}
+        `;
+        historyList.appendChild(div);
+      });
+    }
+
+    function formatRM(value) {
+      return new Intl.NumberFormat('ms-MY', {
+        style: 'currency',
+        currency: 'MYR'
+      }).format(value);
+    }
+
+    function escapeHTML(text) {
+      return text.replace(/[&<>'"]/g, function (char) {
+        const chars = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#039;',
+          '"': '&quot;'
+        };
+        return chars[char];
+      });
+    }
+  </script>
 </body>
 </html>
