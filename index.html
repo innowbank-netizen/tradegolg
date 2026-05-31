@@ -3,202 +3,418 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gold Trading Demo</title>
+<title>BANK RM</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#0f172a;
-color:white;
+background:#f5f7fb;
 }
 
-.login-page{
+/* LOGIN */
+
+#loginPage{
+height:100vh;
+background:linear-gradient(160deg,#0033cc,#ff0000);
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+padding:20px;
 }
 
 .login-box{
-background:#1e293b;
-padding:30px;
-border-radius:15px;
-width:350px;
-text-align:center;
-}
-
-.login-box h1{
-color:gold;
-margin-bottom:20px;
-}
-
-input{
+background:#fff;
 width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:8px;
+max-width:380px;
+padding:30px;
+border-radius:30px;
+box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
-button{
-padding:12px;
-border:none;
-border-radius:8px;
-cursor:pointer;
+.logo{
+text-align:center;
+font-size:40px;
+color:#0033cc;
+margin-bottom:10px;
+}
+
+.bank-name{
+text-align:center;
+font-size:30px;
 font-weight:bold;
+color:#0033cc;
+margin-bottom:25px;
+}
+
+.input-group{
+margin-bottom:15px;
+}
+
+.input-group input{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:12px;
+font-size:15px;
 }
 
 .login-btn{
 width:100%;
-background:gold;
-color:black;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#0033cc;
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
-.dashboard{
+/* DASHBOARD */
+
+#dashboard{
 display:none;
-padding:20px;
+max-width:450px;
+margin:auto;
+padding-bottom:100px;
 }
 
 .header{
-display:flex;
-justify-content:space-between;
-background:#1e293b;
-padding:15px;
-border-radius:10px;
-margin-bottom:15px;
+background:linear-gradient(135deg,#0033cc,#ff0000);
+padding:25px;
+border-radius:0 0 30px 30px;
+color:white;
 }
 
-.card{
-background:#1e293b;
+.header h2{
+margin-bottom:5px;
+}
+
+.balance-card{
+margin:-30px 15px 0;
+background:white;
+border-radius:20px;
 padding:20px;
-border-radius:10px;
-margin-bottom:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
-.price{
-font-size:32px;
-color:gold;
+.balance{
+font-size:35px;
 font-weight:bold;
-}
-
-.buy{
-background:#22c55e;
-color:white;
-margin-right:10px;
-}
-
-.sell{
-background:#ef4444;
-color:white;
-}
-
-canvas{
-background:#111827;
-border-radius:10px;
-width:100%;
-height:300px;
-}
-
-ul{
+color:#0033cc;
 margin-top:10px;
 }
 
-li{
-padding:5px;
+.menu{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:20px;
 }
+
+.menu-item{
+text-align:center;
+}
+
+.icon{
+width:55px;
+height:55px;
+background:#f2f4f8;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:auto;
+font-size:20px;
+color:#0033cc;
+}
+
+.menu-item p{
+font-size:12px;
+margin-top:5px;
+}
+
+.history{
+margin:15px;
+background:white;
+padding:15px;
+border-radius:20px;
+box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.history h3{
+margin-bottom:10px;
+}
+
+.transaksi{
+padding:12px 0;
+border-bottom:1px solid #eee;
+}
+
+.nominal{
+float:right;
+font-weight:bold;
+color:red;
+}
+
+.chat-admin{
+position:fixed;
+bottom:80px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:420px;
+padding:15px;
+background:linear-gradient(135deg,#0033cc,#ff0000);
+color:white;
+border:none;
+border-radius:15px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+width:100%;
+max-width:450px;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px;
+box-shadow:0 -3px 10px rgba(0,0,0,.1);
+}
+
+.bottom-nav div{
+text-align:center;
+font-size:12px;
+color:#555;
+}
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:white;
+width:90%;
+max-width:350px;
+padding:20px;
+border-radius:20px;
+}
+
+.popup-box h3{
+margin-bottom:15px;
+}
+
+.popup-box input{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.btn-merah{
+background:#ff0000;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+border-radius:10px;
+cursor:pointer;
+}
+
+.btn-putih{
+margin-top:10px;
+background:#eee;
+border:none;
+padding:12px;
+width:100%;
+border-radius:10px;
+cursor:pointer;
+}
+
 </style>
 </head>
+
 <body>
 
-<div id="loginPage" class="login-page">
+<!-- LOGIN -->
+
+<div id="loginPage">
 
 <div class="login-box">
 
-<h1>🥇 GOLD TRADING</h1>
+<div class="logo">
+<i class="fa-solid fa-building-columns"></i>
+</div>
 
-<input type="text" id="username" placeholder="Username">
+<div class="bank-name">
+BANK RM
+</div>
 
+<div class="input-group">
+<input type="text" id="userid" placeholder="User ID">
+</div>
+
+<div class="input-group">
 <input type="password" id="password" placeholder="Password">
+</div>
 
 <button class="login-btn" onclick="login()">
-LOGIN
+MASUK
 </button>
 
-<br><br>
-
-<small>
-Demo Login<br>
-Username: admin<br>
-Password: 123456
-</small>
-
 </div>
 
 </div>
 
-<div id="dashboard" class="dashboard">
+<!-- DASHBOARD -->
+
+<div id="dashboard">
 
 <div class="header">
+<h2>Selamat Datang</h2>
+<p>Nomor Rekening : 1234567890</p>
+</div>
 
-<h2>Gold Trading Demo</h2>
+<div class="balance-card">
 
-<div>
-👤 <span id="user"></span>
+<p>Saldo Tersedia</p>
+
+<div class="balance" id="saldo">
+RM 50,000
+</div>
+
+<div class="menu">
+
+<div class="menu-item">
+<div class="icon">
+<i class="fa-solid fa-money-bill-transfer"></i>
+</div>
+<p>Transfer</p>
+</div>
+
+<div class="menu-item">
+<div class="icon" onclick="bukaTarik()">
+<i class="fa-solid fa-arrow-down"></i>
+</div>
+<p>Tarik Dana</p>
+</div>
+
+<div class="menu-item">
+<div class="icon">
+<i class="fa-solid fa-wallet"></i>
+</div>
+<p>Deposit</p>
+</div>
+
+<div class="menu-item">
+<div class="icon">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+<p>Mutasi</p>
 </div>
 
 </div>
 
-<div class="card">
-
-<h3>Saldo Virtual</h3>
-
-<h2 id="balance">
-Rp 10.000.000
-</h2>
-
 </div>
 
-<div class="card">
-
-<h3>Harga Gold</h3>
-
-<div id="price" class="price">
-Rp 1.500.000
-</div>
-
-</div>
-
-<div class="card">
-
-<h3>Grafik Harga Gold</h3>
-
-<canvas id="chart" width="800" height="300"></canvas>
-
-</div>
-
-<div class="card">
-
-<button class="buy" onclick="buy()">
-BUY Rp100.000
-</button>
-
-<button class="sell" onclick="sell()">
-SELL Rp100.000
-</button>
-
-</div>
-
-<div class="card">
+<div class="history">
 
 <h3>Riwayat Transaksi</h3>
 
-<ul id="history"></ul>
+<div id="riwayat">
+
+<div class="transaksi">
+Deposit Awal
+<span class="nominal" style="color:green">
++RM 50,000
+</span>
+</div>
+
+</div>
+
+</div>
+
+<button class="chat-admin"
+onclick="window.open('https://wa.me/60123456789')">
+
+<i class="fa-brands fa-whatsapp"></i>
+Chat Admin
+
+</button>
+
+<div class="bottom-nav">
+
+<div>
+<i class="fa-solid fa-house"></i>
+<br>Home
+</div>
+
+<div>
+<i class="fa-solid fa-right-left"></i>
+<br>Transfer
+</div>
+
+<div>
+<i class="fa-solid fa-clock-rotate-left"></i>
+<br>Riwayat
+</div>
+
+<div>
+<i class="fa-solid fa-user"></i>
+<br>Akun
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP TARIK DANA -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<h3>Tarik Dana</h3>
+
+<input type="number"
+id="jumlahTarik"
+placeholder="Masukkan jumlah RM">
+
+<button class="btn-merah"
+onclick="tarikDana()">
+
+Konfirmasi
+
+</button>
+
+<button class="btn-putih"
+onclick="tutupTarik()">
+
+Batal
+
+</button>
 
 </div>
 
@@ -206,152 +422,78 @@ SELL Rp100.000
 
 <script>
 
-let balance = 10000000;
-let goldPrice = 1500000;
-
-let prices = [];
-
-for(let i=0;i<30;i++){
-prices.push(goldPrice);
-}
+let saldo = 50000;
 
 function login(){
 
-let user =
-document.getElementById("username").value;
+let id = document.getElementById("userid").value;
+let pass = document.getElementById("password").value;
 
-let pass =
-document.getElementById("password").value;
-
-if(user==="admin" && pass==="123456"){
+if(id=="admin" && pass=="12345"){
 
 document.getElementById("loginPage").style.display="none";
-
 document.getElementById("dashboard").style.display="block";
 
-document.getElementById("user").innerText=user;
-
-drawChart();
-
 }else{
 
-alert("Username atau Password salah!");
+alert("ID atau Password Salah");
 
 }
 
 }
 
-function updatePrice(){
+function bukaTarik(){
 
-let change =
-Math.floor(Math.random()*20000)-10000;
-
-goldPrice += change;
-
-if(goldPrice<1000000){
-goldPrice=1000000;
-}
-
-document.getElementById("price").innerText =
-"Rp " + goldPrice.toLocaleString("id-ID");
-
-prices.push(goldPrice);
-
-if(prices.length>30){
-prices.shift();
-}
-
-drawChart();
+document.getElementById("popup").style.display="flex";
 
 }
 
-setInterval(updatePrice,2000);
+function tutupTarik(){
 
-function drawChart(){
-
-let canvas =
-document.getElementById("chart");
-
-let ctx =
-canvas.getContext("2d");
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-let max =
-Math.max(...prices);
-
-let min =
-Math.min(...prices);
-
-ctx.beginPath();
-
-for(let i=0;i<prices.length;i++){
-
-let x =
-(i/(prices.length-1))*canvas.width;
-
-let y =
-canvas.height -
-((prices[i]-min)/(max-min+1))
-*canvas.height;
-
-if(i===0){
-ctx.moveTo(x,y);
-}else{
-ctx.lineTo(x,y);
-}
+document.getElementById("popup").style.display="none";
 
 }
 
-ctx.strokeStyle="gold";
-ctx.lineWidth=3;
-ctx.stroke();
+function tarikDana(){
+
+let jumlah =
+parseFloat(document.getElementById("jumlahTarik").value);
+
+if(isNaN(jumlah) || jumlah<=0){
+
+alert("Masukkan jumlah yang benar");
+return;
 
 }
 
-function buy(){
+if(jumlah > saldo){
 
-balance -= 100000;
-
-updateBalance();
-
-addHistory(
-"BUY Gold Rp100.000"
-);
+alert("Saldo tidak mencukupi");
+return;
 
 }
 
-function sell(){
+saldo -= jumlah;
 
-balance += 100000;
+document.getElementById("saldo").innerHTML =
+"RM " + saldo.toLocaleString();
 
-updateBalance();
+let item =
+document.createElement("div");
 
-addHistory(
-"SELL Gold Rp100.000"
-);
+item.className="transaksi";
 
-}
+item.innerHTML=
+'Penarikan Dana <span class="nominal">-RM '+
+jumlah.toLocaleString()+
+'</span>';
 
-function updateBalance(){
+document.getElementById("riwayat")
+prepend(item);
 
-document.getElementById("balance").innerText =
-"Rp " +
-balance.toLocaleString("id-ID");
+alert("Penarikan berhasil diproses");
 
-}
-
-function addHistory(text){
-
-let li =
-document.createElement("li");
-
-li.innerText =
-new Date().toLocaleTimeString()
-+ " - " + text;
-
-document.getElementById("history")
-.prepend(li);
+tutupTarik();
 
 }
 
