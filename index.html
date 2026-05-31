@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ms">
+<!DOCTYPE html><html lang="ms">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,219 +9,215 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-    }
+    }body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f766e, #064e3b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #111827;
+}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f766e, #064e3b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      color: #111827;
-    }
+.container {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
 
-    .container {
-      width: 100%;
-      max-width: 460px;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
-    }
+h1 {
+  text-align: center;
+  color: #065f46;
+  margin-bottom: 8px;
+  font-size: 28px;
+}
 
-    h1 {
-      text-align: center;
-      color: #065f46;
-      margin-bottom: 8px;
-      font-size: 28px;
-    }
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #6b7280;
-      margin-bottom: 24px;
-      font-size: 14px;
-    }
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
 
-    label {
-      display: block;
-      margin: 14px 0 6px;
-      font-weight: bold;
-      font-size: 14px;
-    }
+input, select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+}
 
-    input, select {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-    }
+input:focus, select:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
 
-    input:focus, select:focus {
-      border-color: #0f766e;
-      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
-    }
+button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #0f766e;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-    button {
-      width: 100%;
-      margin-top: 18px;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: #0f766e;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+button:hover {
+  background: #115e59;
+  transform: translateY(-1px);
+}
 
-    button:hover {
-      background: #115e59;
-      transform: translateY(-1px);
-    }
+.hidden {
+  display: none;
+}
 
-    .hidden {
-      display: none;
-    }
+.notice {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #ecfdf5;
+  color: #065f46;
+  font-size: 14px;
+  line-height: 1.5;
+}
 
-    .notice {
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 10px;
-      background: #ecfdf5;
-      color: #065f46;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+.history {
+  margin-top: 22px;
+}
 
-    .history {
-      margin-top: 22px;
-    }
+.history h2 {
+  font-size: 18px;
+  color: #065f46;
+  margin-bottom: 10px;
+}
 
-    .history h2 {
-      font-size: 18px;
-      color: #065f46;
-      margin-bottom: 10px;
-    }
+.transaction {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
 
-    .transaction {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
+.admin-box {
+  margin-top: 16px;
+  padding: 14px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  font-size: 14px;
+  text-align: center;
+}
 
-    .admin-box {
-      margin-top: 16px;
-      padding: 14px;
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 12px;
-      font-size: 14px;
-      text-align: center;
-    }
+.admin-box a {
+  color: #c2410c;
+  font-weight: bold;
+  text-decoration: none;
+}
 
-    .admin-box a {
-      color: #c2410c;
-      font-weight: bold;
-      text-decoration: none;
-    }
+.demo-warning {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.5;
+}
 
-    .demo-warning {
-      margin-top: 14px;
-      font-size: 12px;
-      color: #6b7280;
-      text-align: center;
-      line-height: 1.5;
-    }
+@media (max-width: 480px) {
+  .container {
+    padding: 22px;
+  }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 22px;
-      }
+  h1 {
+    font-size: 24px;
+  }
+}
 
-      h1 {
-        font-size: 24px;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <section id="loginPage">
       <h1>Money Changing</h1>
-      <p class="subtitle">Login pengguna</p>
+      <p class="subtitle">Login pengguna</p><form id="loginForm">
+    <label for="userId">ID</label>
+    <input type="text" id="userId" placeholder="Masukkan ID" required />
 
-      <form id="loginForm">
-        <label for="userId">ID</label>
-        <input type="text" id="userId" placeholder="Masukkan ID" required />
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Masukkan password" required />
 
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Masukkan password" required />
+    <button type="submit">Login</button>
+  </form>
 
-        <button type="submit">Login</button>
-      </form>
+  <p class="demo-warning">Demo sahaja. Jangan masukkan ID atau password sebenar.</p>
+</section>
 
-      <p class="demo-warning">sila masukkan kata laluan dengan betul.</p>
-    </section>
+<section id="transferPage" class="hidden">
+  <h1>Money Changing</h1>
+  <p class="subtitle">Form transfer Ringgit Malaysia</p>
 
-    <section id="transferPage" class="hidden">
-      <h1>Money Changing</h1>
-      <p class="subtitle">Form transfer Ringgit Malaysia</p>
+  <form id="transferForm">
+    <label for="amount">Nominal RM</label>
+    <input type="number" id="amount" placeholder="Contoh: 1500" min="1" required />
 
-      <form id="transferForm">
-        <label for="amount">Nominal RM</label>
-        <input type="number" id="amount" placeholder="Contoh: 1500" min="1" required />
+    <label for="ownerName">Nama Pemilik Rekening</label>
+    <input type="text" id="ownerName" placeholder="Nama penerima" required />
 
-        <label for="ownerName">Nama Pemilik Rekening</label>
-        <input type="text" id="ownerName" placeholder="Nama penerima" required />
+    <label for="accountNumber">Nomor Rekening</label>
+    <input type="text" id="accountNumber" placeholder="Nomor rekening tujuan" required />
 
-        <label for="accountNumber">Nomor Rekening</label>
-        <input type="text" id="accountNumber" placeholder="Nomor rekening tujuan" required />
+    <label for="bankName">Nama Bank</label>
+    <select id="bankName" required>
+      <option value="">Pilih bank</option>
+      <option>RHB Bank</option>
+      <option>Maybank</option>
+      <option>CIMB Bank</option>
+      <option>Public Bank</option>
+      <option>Hong Leong Bank</option>
+      <option>Bank Islam</option>
+      <option>BSN</option>
+    </select>
 
-        <label for="bankName">Nama Bank</label>
-        <select id="bankName" required>
-          <option value="">Pilih bank</option>
-          <option>RHB Bank</option>
-          <option>Maybank</option>
-          <option>CIMB Bank</option>
-          <option>Public Bank</option>
-          <option>Hong Leong Bank</option>
-          <option>Bank Islam</option>
-          <option>BSN</option>
-        </select>
+    <button type="submit">Transfer</button>
+  </form>
 
-        <button type="submit">Transfer</button>
-      </form>
+  <div id="successMessage" class="notice hidden"></div>
 
-      <div id="successMessage" class="notice hidden"></div>
+  <button id="withdrawBtn" type="button">Tarik</button>
 
-      <button id="withdrawBtn" type="button">Tarik</button>
-
-      <div id="adminBox" class="admin-box hidden">
-        Untuk proses tarik, sila hubungi admin:<br />
-        <a id="adminLink" href="#" target="_blank">+6285849952796</a>
-      </div>
-
-      <div class="history">
-        <h2>Riwayat Transaksi</h2>
-        <div id="historyList">
-          <p class="subtitle">Belum ada transaksi.</p>
-        </div>
-      </div>
-
-      <p class="demo-warning">Catatan: bayaran proses pengeluaran adalah sebanyak RM900.00.</p>
-    </section>
+  <div id="adminBox" class="admin-box hidden">
+    Untuk proses tarik, sila hubungi admin:<br />
+    <a id="adminLink" href="#" target="_blank">+60 12-345 6789</a>
   </div>
 
-  <script>
+  <div class="history">
+    <h2>Riwayat Transaksi</h2>
+    <div id="historyList">
+      <p class="subtitle">Belum ada transaksi.</p>
+    </div>
+  </div>
+
+  <p class="demo-warning">Catatan: halaman ini tidak menyambung ke bank dan tidak memproses wang sebenar.</p>
+</section>
+
+  </div>  <script>
     const loginPage = document.getElementById('loginPage');
     const transferPage = document.getElementById('transferPage');
     const loginForm = document.getElementById('loginForm');
@@ -309,6 +304,5 @@
         return chars[char];
       });
     }
-  </script>
-</body>
+  </script></body>
 </html>
