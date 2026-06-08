@@ -1,308 +1,283 @@
-<!DOCTYPE html><html lang="ms">
+<!DOCTYPE html>
+<html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Money Changing</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0f766e, #064e3b);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: #111827;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BANG JALI FINANCE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:system-ui,sans-serif;
 }
 
-.container {
-  width: 100%;
-  max-width: 460px;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 28px;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+body{
+    background:linear-gradient(160deg,#03140a,#064e3b,#020617);
+    color:white;
 }
 
-h1 {
-  text-align: center;
-  color: #065f46;
-  margin-bottom: 8px;
-  font-size: 28px;
+#loginPage{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.subtitle {
-  text-align: center;
-  color: #6b7280;
-  margin-bottom: 24px;
-  font-size: 14px;
+.login{
+    width:90%;
+    max-width:360px;
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(12px);
+    padding:25px;
+    border-radius:22px;
+    text-align:center;
 }
 
-label {
-  display: block;
-  margin: 14px 0 6px;
-  font-weight: bold;
-  font-size: 14px;
+.logo{
+    font-size:50px;
+    margin-bottom:10px;
 }
 
-input, select {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
+input{
+    width:100%;
+    padding:12px;
+    margin:7px 0;
+    border:none;
+    border-radius:10px;
+    background:rgba(255,255,255,0.10);
+    color:white;
+    outline:none;
 }
 
-input:focus, select:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+input::placeholder{
+    color:#d1d5db;
 }
 
-button {
-  width: 100%;
-  margin-top: 18px;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  background: #0f766e;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
+button{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    background:#166534;
+    color:white;
+    cursor:pointer;
 }
 
-button:hover {
-  background: #115e59;
-  transform: translateY(-1px);
+button:hover{
+    background:#15803d;
 }
 
-.hidden {
-  display: none;
+#app{
+    display:none;
+    padding-bottom:90px;
 }
 
-.notice {
-  margin-top: 16px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #ecfdf5;
-  color: #065f46;
-  font-size: 14px;
-  line-height: 1.5;
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
 }
 
-.history {
-  margin-top: 22px;
+.brand{
+    font-weight:bold;
+    font-size:17px;
 }
 
-.history h2 {
-  font-size: 18px;
-  color: #065f46;
-  margin-bottom: 10px;
+.card{
+    margin:15px;
+    padding:22px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#166534,#064e3b);
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
 }
 
-.transaction {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 1.6;
+.balance{
+    font-size:33px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-.admin-box {
-  margin-top: 16px;
-  padding: 14px;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  border-radius: 12px;
-  font-size: 14px;
-  text-align: center;
+.userinfo{
+    margin:15px;
+    font-size:13px;
+    opacity:0.9;
+    line-height:1.7;
 }
 
-.admin-box a {
-  color: #c2410c;
-  font-weight: bold;
-  text-decoration: none;
+.box{
+    margin:15px;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(10px);
 }
 
-.demo-warning {
-  margin-top: 14px;
-  font-size: 12px;
-  color: #6b7280;
-  text-align: center;
-  line-height: 1.5;
+.box p{
+    font-size:13px;
+    line-height:1.9;
+    opacity:0.92;
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 22px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
+.tx{
+    background:rgba(255,255,255,0.07);
+    padding:12px;
+    border-radius:12px;
+    margin-top:8px;
+    font-size:13px;
 }
 
-  </style>
+.nav{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(10px);
+    padding:10px 0;
+}
+
+.nav div{
+    text-align:center;
+    font-size:12px;
+    opacity:0.92;
+}
+
+.small{
+    font-size:11px;
+    opacity:0.65;
+    margin-top:10px;
+}
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <section id="loginPage">
-      <h1>Money Changing</h1>
-      <p class="subtitle">Login pengguna</p><form id="loginForm">
-    <label for="userId">ID</label>
-    <input type="text" id="userId" placeholder="Masukkan ID" required />
 
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Masukkan password" required />
+<div id="loginPage">
+    <div class="login">
+        <div class="logo">🟢</div>
 
-    <button type="submit">Login</button>
-  </form>
+        <h2 style="margin-bottom:15px;">
+            BANG JALI FINANCE
+        </h2>
 
-  <p class="demo-warning">Demo sahaja. Jangan masukkan ID atau password sebenar.</p>
-</section>
+        <input id="id" placeholder="ID Pengguna">
 
-<section id="transferPage" class="hidden">
-  <h1>Money Changing</h1>
-  <p class="subtitle">Form transfer Ringgit Malaysia</p>
+        <input id="pw" type="password" placeholder="Kata Laluan">
 
-  <form id="transferForm">
-    <label for="amount">Nominal RM</label>
-    <input type="number" id="amount" placeholder="Contoh: 1500" min="1" required />
+        <button onclick="login()">Masuk</button>
 
-    <label for="ownerName">Nama Pemilik Rekening</label>
-    <input type="text" id="ownerName" placeholder="Nama penerima" required />
-
-    <label for="accountNumber">Nomor Rekening</label>
-    <input type="text" id="accountNumber" placeholder="Nomor rekening tujuan" required />
-
-    <label for="bankName">Nama Bank</label>
-    <select id="bankName" required>
-      <option value="">Pilih bank</option>
-      <option>RHB Bank</option>
-      <option>Maybank</option>
-      <option>CIMB Bank</option>
-      <option>Public Bank</option>
-      <option>Hong Leong Bank</option>
-      <option>Bank Islam</option>
-      <option>BSN</option>
-    </select>
-
-    <button type="submit">Transfer</button>
-  </form>
-
-  <div id="successMessage" class="notice hidden"></div>
-
-  <button id="withdrawBtn" type="button">Tarik</button>
-
-  <div id="adminBox" class="admin-box hidden">
-    Untuk proses tarik, sila hubungi admin:<br />
-    <a id="adminLink" href="#" target="_blank">+60 12-345 6789</a>
-  </div>
-
-  <div class="history">
-    <h2>Riwayat Transaksi</h2>
-    <div id="historyList">
-      <p class="subtitle">Belum ada transaksi.</p>
+        <div class="small">
+            Dashboard kewangan peribadi
+        </div>
     </div>
-  </div>
+</div>
 
-  <p class="demo-warning">Catatan: halaman ini tidak menyambung ke bank dan tidak memproses wang sebenar.</p>
-</section>
+<div id="app">
 
-  </div>  <script>
-    const loginPage = document.getElementById('loginPage');
-    const transferPage = document.getElementById('transferPage');
-    const loginForm = document.getElementById('loginForm');
-    const transferForm = document.getElementById('transferForm');
-    const successMessage = document.getElementById('successMessage');
-    const historyList = document.getElementById('historyList');
-    const withdrawBtn = document.getElementById('withdrawBtn');
-    const adminBox = document.getElementById('adminBox');
-    const adminLink = document.getElementById('adminLink');
+    <div class="header">
+        <div class="brand">
+            🟢 BANG JALI FINANCE
+        </div>
+    </div>
 
-    const adminPhone = '60123456789';
-    const transactions = [];
+    <div class="card">
+        <div>Jumlah Baki</div>
 
-    loginForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      loginPage.classList.add('hidden');
-      transferPage.classList.remove('hidden');
-    });
+        <div class="balance">
+            RM <span id="saldo">0.00</span>
+        </div>
+    </div>
 
-    transferForm.addEventListener('submit', function (event) {
-      event.preventDefault();
+    <div class="userinfo" id="userInfo"></div>
 
-      const amount = Number(document.getElementById('amount').value);
-      const ownerName = document.getElementById('ownerName').value.trim();
-      const accountNumber = document.getElementById('accountNumber').value.trim();
-      const bankName = document.getElementById('bankName').value;
+    <div class="box">
+        <h3 style="margin-bottom:12px;">
+            Makluman Akaun
+        </h3>
 
-      const transaction = {
-        amount,
-        ownerName,
-        accountNumber,
-        bankName,
-        date: new Date().toLocaleString('ms-MY')
-      };
+        <p>
+            Akaun kewangan ini digunakan untuk paparan baki,
+            rekod transaksi, dan maklumat pentadbiran secara ringkas.
+            Semua maklumat dipaparkan bagi tujuan pengurusan kewangan
+            peribadi dan semakan dalaman.
+            <br><br>
+            Sila pastikan maklumat pengguna disemak dengan teliti sebelum
+            sebarang tindakan dibuat.
+        </p>
+    </div>
 
-      transactions.unshift(transaction);
-      renderHistory();
+    <div style="margin:15px;">
+        <h4 style="margin-bottom:10px;">
+            Riwayat Transaksi
+        </h4>
 
-      successMessage.classList.remove('hidden');
-      successMessage.innerHTML = `Transfer demo sebanyak <strong>${formatRM(amount)}</strong> telah direkodkan ke rekening tujuan atas nama <strong>${ownerName}</strong>.`;
+        <div id="log">
+            <div class="tx">
+                🟢 Penerimaan Dana RM 79,990.00 [BERJAYA]
+            </div>
 
-      transferForm.reset();
-    });
+            <div class="tx">
+                🟡 Semakan Sistem Kewangan [PENDING]
+            </div>
 
-    withdrawBtn.addEventListener('click', function () {
-      adminBox.classList.remove('hidden');
-      const message = encodeURIComponent('Halo admin, saya ingin membuat permohonan tarik dana Money Changing.');
-      adminLink.href = `https://wa.me/${adminPhone}?text=${message}`;
-    });
+            <div class="tx">
+                🔴 Pemindahan Dana RM 0.00 [TIADA AKTIVITI]
+            </div>
+        </div>
+    </div>
 
-    function renderHistory() {
-      historyList.innerHTML = '';
+    <div class="nav">
+        <div>🏠<br>Home</div>
+        <div>💳<br>Wallet</div>
+        <div>👤<br>Akaun</div>
+    </div>
 
-      transactions.forEach(function (item) {
-        const div = document.createElement('div');
-        div.className = 'transaction';
-        div.innerHTML = `
-          <strong>${formatRM(item.amount)}</strong><br />
-          Nama: ${escapeHTML(item.ownerName)}<br />
-          Rekening: ${escapeHTML(item.accountNumber)}<br />
-          Bank: ${escapeHTML(item.bankName)}<br />
-          Masa: ${item.date}
+</div>
+
+<script>
+let user={
+    id:"BALQIS",
+    pass:"4792",
+    nama:"NUR BALQIS BINTI MUHAMMAD SHAFIQ",
+    saldo:79990
+};
+
+function formatRM(x){
+    return Number(x || 0).toLocaleString(
+        "ms-MY",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
+}
+
+function login(){
+    let id=document.getElementById("id").value.trim();
+    let pw=document.getElementById("pw").value.trim();
+
+    if(id === user.id && pw === user.pass){
+        document.getElementById("loginPage").style.display="none";
+        document.getElementById("app").style.display="block";
+
+        document.getElementById("saldo").innerText=formatRM(user.saldo);
+
+        document.getElementById("userInfo").innerHTML=
+        `
+        Nama Pengguna : ${user.nama}<br>
+        ID Pengguna : ${user.id}
         `;
-        historyList.appendChild(div);
-      });
+    }else{
+        alert("ID atau kata laluan salah");
     }
+}
+</script>
 
-    function formatRM(value) {
-      return new Intl.NumberFormat('ms-MY', {
-        style: 'currency',
-        currency: 'MYR'
-      }).format(value);
-    }
-
-    function escapeHTML(text) {
-      return text.replace(/[&<>'"]/g, function (char) {
-        const chars = {
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          "'": '&#039;',
-          '"': '&quot;'
-        };
-        return chars[char];
-      });
-    }
-  </script></body>
+</body>
 </html>
