@@ -15,10 +15,73 @@
 
 body{
     background:linear-gradient(160deg,#010b08,#042d22,#000);
-    color:#fff;
+    color:white;
 }
 
+/* LOGIN */
+#loginPage{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.login-box{
+    width:100%;
+    max-width:360px;
+    padding:28px;
+    border-radius:25px;
+    background:rgba(255,255,255,.07);
+    box-shadow:0 10px 35px rgba(0,0,0,.45);
+    text-align:center;
+}
+
+.login-box h2{
+    color:#22c55e;
+    margin-bottom:8px;
+}
+
+.login-box p{
+    color:#ccc;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background:rgba(255,255,255,.12);
+    color:white;
+}
+
+input::placeholder{
+    color:#ccc;
+}
+
+button{
+    width:100%;
+    padding:16px;
+    margin-top:10px;
+    border:none;
+    border-radius:15px;
+    background:#22c55e;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16a34a;
+}
+
+/* DASHBOARD */
 .container{
+    display:none;
     width:100%;
     max-width:420px;
     margin:auto;
@@ -56,30 +119,14 @@ body{
 }
 
 .saldo{
-    font-size:45px;
+    font-size:42px;
     font-weight:bold;
     margin:20px 0;
 }
 
 .icon{
-    font-size:70px;
+    font-size:65px;
     margin-bottom:20px;
-}
-
-button{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:15px;
-    background:#22c55e;
-    color:#fff;
-    font-size:22px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#16a34a;
 }
 
 .info{
@@ -106,99 +153,103 @@ button:hover{
     font-size:13px;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<!-- PANEL LOGIN -->
+<div id="loginPage">
+    <div class="login-box">
+        <h2>📈 FHM MARKETS</h2>
+        <p>Login Akaun Trading</p>
 
-<div class="logo">
-    <h1>📈 FHM MARKETS</h1>
-    <p>INVESTMENT DEMO</p>
+        <input id="userId" placeholder="ID Pengguna">
+        <input id="password" type="password" placeholder="Kata Laluan">
+
+        <button onclick="login()">LOGIN</button>
+    </div>
 </div>
 
-<div class="card">
+<!-- DASHBOARD -->
+<div class="container" id="dashboard">
 
-    <div class="title">
-        SALDO AKAUN
+    <div class="logo">
+        <h1>📈 FHM MARKETS</h1>
+        <p>INVESTMENT DEMO</p>
     </div>
 
-    <div class="saldo">
-        RM <span id="saldo">79,990.00</span>
+    <div class="card">
+        <div class="title">SALDO AKAUN</div>
+
+        <div class="saldo">
+            RM <span id="saldo">79,990.00</span>
+        </div>
+
+        <div class="icon">💰</div>
+
+        <button onclick="withdraw()">TARIK SALDO</button>
     </div>
 
-    <div class="icon">
-        💰
+    <div class="info">
+        <h3>MAKLUMAT AKAUN</h3>
+        <p>Nama Pengguna : NUR BALQIS</p>
+        <p>ID Trading : BALQIS</p>
+        <p>Status Akaun : AKTIF</p>
     </div>
 
-    <button onclick="withdraw()">
-        TARIK SALDO
-    </button>
-
-</div>
-
-<div class="info">
-
-    <h3>MAKLUMAT AKAUN</h3>
-
-    <p>
-        Nama Pengguna : BALQIS
-    </p>
-
-    <p>
-        Status Akaun : AKTIF
-    </p>
-
-</div>
-
-<div class="footer">
-    © 2026 FHM MARKETS INVESTMENT DEMO
-</div>
+    <div class="footer">
+        © 2026 FHM MARKETS INVESTMENT DEMO
+    </div>
 
 </div>
 
 <script>
-
-let saldo=79990;
+let saldo = 79990;
 
 function formatRM(n){
-    return n.toLocaleString(
-        "ms-MY",
-        {
-            minimumFractionDigits:2,
-            maximumFractionDigits:2
-        }
-    );
+    return n.toLocaleString("ms-MY",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+    });
+}
+
+function login(){
+    let id = document.getElementById("userId").value.trim();
+    let pw = document.getElementById("password").value.trim();
+
+    if(id === "BALQIS" && pw === "4792"){
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+    }else{
+        alert("ID atau kata laluan salah");
+    }
 }
 
 function withdraw(){
+    let jumlah = prompt("Masukkan jumlah tarik saldo");
 
-    let jumlah=prompt("Masukkan jumlah tarik saldo");
-
-    if(jumlah===null){
+    if(jumlah === null){
         return;
     }
 
-    jumlah=Number(jumlah);
+    jumlah = Number(jumlah);
 
-    if(isNaN(jumlah)||jumlah<=0){
+    if(isNaN(jumlah) || jumlah <= 0){
         alert("Jumlah tidak sah");
         return;
     }
 
-    if(jumlah>saldo){
+    if(jumlah > saldo){
         alert("Saldo tidak mencukupi");
         return;
     }
 
-    saldo=saldo-jumlah;
+    saldo = saldo - jumlah;
 
-    document.getElementById("saldo").innerText=formatRM(saldo);
+    document.getElementById("saldo").innerText = formatRM(saldo);
 
     alert("Permintaan tarik saldo berjaya dihantar.");
 }
-
 </script>
 
 </body>
