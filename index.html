@@ -1,255 +1,169 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RHB ISLAMIC</title>
+<title>FHM MARKETS INVESTMENT</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:system-ui,sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:linear-gradient(160deg,#03140a,#064e3b,#020617);
-    color:white;
+    background:linear-gradient(160deg,#010b08,#042d22,#000);
+    color:#fff;
 }
 
-#loginPage{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.login{
-    width:90%;
-    max-width:360px;
-    background:rgba(255,255,255,0.07);
-    backdrop-filter:blur(12px);
-    padding:25px;
-    border-radius:22px;
-    text-align:center;
+.container{
+    width:100%;
+    max-width:420px;
+    margin:auto;
+    min-height:100vh;
+    padding:20px;
 }
 
 .logo{
-    font-size:50px;
-    margin-bottom:10px;
+    text-align:center;
+    margin-top:20px;
+    margin-bottom:30px;
 }
 
-input{
-    width:100%;
-    padding:12px;
-    margin:7px 0;
-    border:none;
-    border-radius:10px;
-    background:rgba(255,255,255,0.10);
-    color:white;
-    outline:none;
+.logo h1{
+    color:#22c55e;
+    font-size:28px;
 }
 
-input::placeholder{
-    color:#d1d5db;
+.logo p{
+    color:#bfbfbf;
+    margin-top:5px;
+}
+
+.card{
+    background:linear-gradient(135deg,#064e3b,#052e25);
+    border-radius:25px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.title{
+    font-size:18px;
+    opacity:.8;
+}
+
+.saldo{
+    font-size:45px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.icon{
+    font-size:70px;
+    margin-bottom:20px;
 }
 
 button{
     width:100%;
-    padding:12px;
-    margin-top:8px;
+    padding:16px;
     border:none;
-    border-radius:10px;
+    border-radius:15px;
+    background:#22c55e;
+    color:#fff;
+    font-size:22px;
     font-weight:bold;
-    background:#166534;
-    color:white;
     cursor:pointer;
 }
 
 button:hover{
-    background:#15803d;
+    background:#16a34a;
 }
 
-#app{
-    display:none;
-    padding-bottom:90px;
+.info{
+    margin-top:25px;
+    background:rgba(255,255,255,.05);
+    border-radius:20px;
+    padding:20px;
 }
 
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px;
+.info h3{
+    color:#22c55e;
+    margin-bottom:15px;
 }
 
-.brand{
-    font-weight:bold;
-    font-size:17px;
+.info p{
+    line-height:30px;
+    color:#d5d5d5;
 }
 
-.card{
-    margin:15px;
-    padding:22px;
-    border-radius:22px;
-    background:linear-gradient(135deg,#166534,#064e3b);
-    box-shadow:0 10px 30px rgba(0,0,0,0.35);
-}
-
-.balance{
-    font-size:33px;
-    font-weight:bold;
-    margin-top:8px;
-}
-
-.userinfo{
-    margin:15px;
-    font-size:13px;
-    opacity:0.9;
-    line-height:1.7;
-}
-
-.box{
-    margin:15px;
-    padding:18px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.07);
-    backdrop-filter:blur(10px);
-}
-
-.box p{
-    font-size:13px;
-    line-height:1.9;
-    opacity:0.92;
-}
-
-.tx{
-    background:rgba(255,255,255,0.07);
-    padding:12px;
-    border-radius:12px;
-    margin-top:8px;
-    font-size:13px;
-}
-
-.nav{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    display:flex;
-    justify-content:space-around;
-    background:rgba(0,0,0,0.55);
-    backdrop-filter:blur(10px);
-    padding:10px 0;
-}
-
-.nav div{
+.footer{
     text-align:center;
-    font-size:12px;
-    opacity:0.92;
-}
-
-.small{
-    font-size:11px;
-    opacity:0.65;
-    margin-top:10px;
+    margin-top:40px;
+    color:#888;
+    font-size:13px;
 }
 </style>
+
 </head>
 
 <body>
 
-<div id="loginPage">
-    <div class="login">
-        <div class="logo">🟢</div>
+<div class="container">
 
-        <h2 style="margin-bottom:15px;">
-            BANG JALI FINANCE
-        </h2>
-
-        <input id="id" placeholder="ID Pengguna">
-
-        <input id="pw" type="password" placeholder="Kata Laluan">
-
-        <button onclick="login()">Masuk</button>
-
-        <div class="small">
-            Dashboard kewangan peribadi
-        </div>
-    </div>
+<div class="logo">
+    <h1>📈 FHM MARKETS</h1>
+    <p>INVESTMENT DEMO</p>
 </div>
 
-<div id="app">
+<div class="card">
 
-    <div class="header">
-        <div class="brand">
-            🟢 RHB ISLAMIC
-        </div>
+    <div class="title">
+        SALDO AKAUN
     </div>
 
-    <div class="card">
-        <div>Jumlah Baki</div>
-
-        <div class="balance">
-            RM <span id="saldo">0.00</span>
-        </div>
+    <div class="saldo">
+        RM <span id="saldo">79,990.00</span>
     </div>
 
-    <div class="userinfo" id="userInfo"></div>
-
-    <div class="box">
-        <h3 style="margin-bottom:12px;">
-            Makluman Akaun
-        </h3>
-
-        <p>
-            Akaun kewangan ini digunakan untuk paparan baki,
-            rekod transaksi, dan maklumat pentadbiran secara ringkas.
-            Semua maklumat dipaparkan bagi tujuan pengurusan kewangan
-            peribadi dan semakan dalaman.
-            <br><br>
-            Sila pastikan maklumat pengguna disemak dengan teliti sebelum
-            sebarang tindakan dibuat.
-        </p>
+    <div class="icon">
+        💰
     </div>
 
-    <div style="margin:15px;">
-        <h4 style="margin-bottom:10px;">
-            Riwayat Transaksi
-        </h4>
+    <button onclick="withdraw()">
+        TARIK SALDO
+    </button>
 
-        <div id="log">
-            <div class="tx">
-                🟢 Penerimaan Dana RM 79,990.00 [BERJAYA]
-            </div>
+</div>
 
-            <div class="tx">
-                🟡 Semakan Sistem Kewangan [PENDING]
-            </div>
+<div class="info">
 
-            <div class="tx">
-                🔴 Pemindahan Dana RM 0.00 [TIADA AKTIVITI]
-            </div>
-        </div>
-    </div>
+    <h3>MAKLUMAT AKAUN</h3>
 
-    <div class="nav">
-        <div>🏠<br>Home</div>
-        <div>💳<br>Wallet</div>
-        <div>👤<br>Akaun</div>
-    </div>
+    <p>
+        Nama Pengguna : BALQIS
+    </p>
+
+    <p>
+        Status Akaun : AKTIF
+    </p>
+
+</div>
+
+<div class="footer">
+    © 2026 FHM MARKETS INVESTMENT DEMO
+</div>
 
 </div>
 
 <script>
-let user={
-    id:"BALQIS",
-    pass:"4792",
-    nama:"NUR BALQIS BINTI MUHAMMAD SHAFIQ",
-    saldo:79990
-};
 
-function formatRM(x){
-    return Number(x || 0).toLocaleString(
+let saldo=79990;
+
+function formatRM(n){
+    return n.toLocaleString(
         "ms-MY",
         {
             minimumFractionDigits:2,
@@ -258,25 +172,33 @@ function formatRM(x){
     );
 }
 
-function login(){
-    let id=document.getElementById("id").value.trim();
-    let pw=document.getElementById("pw").value.trim();
+function withdraw(){
 
-    if(id === user.id && pw === user.pass){
-        document.getElementById("loginPage").style.display="none";
-        document.getElementById("app").style.display="block";
+    let jumlah=prompt("Masukkan jumlah tarik saldo");
 
-        document.getElementById("saldo").innerText=formatRM(user.saldo);
-
-        document.getElementById("userInfo").innerHTML=
-        `
-        Nama Pengguna : ${user.nama}<br>
-        ID Pengguna : ${user.id}
-        `;
-    }else{
-        alert("ID atau kata laluan salah");
+    if(jumlah===null){
+        return;
     }
+
+    jumlah=Number(jumlah);
+
+    if(isNaN(jumlah)||jumlah<=0){
+        alert("Jumlah tidak sah");
+        return;
+    }
+
+    if(jumlah>saldo){
+        alert("Saldo tidak mencukupi");
+        return;
+    }
+
+    saldo=saldo-jumlah;
+
+    document.getElementById("saldo").innerText=formatRM(saldo);
+
+    alert("Permintaan tarik saldo berjaya dihantar.");
 }
+
 </script>
 
 </body>
